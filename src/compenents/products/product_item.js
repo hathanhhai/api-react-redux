@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
-
+import {Link} from 'react-router-dom'
 class ProductItem extends Component {
+
+
+    onDelete = (e)=>{
+       this.props.onDelete(e);
+    }
+
     render() {
         var {product,index} =this.props;
         var statusName = product.status ? 'In Stocks' : 'Null';
@@ -18,8 +24,8 @@ class ProductItem extends Component {
                     </span>
                 </td>
                 <td>
-                    <button type="button" className="btn btn-primary ">EDIT</button> &nbsp;
-                    <button type="button" className="btn btn-danger ">DELETE</button>
+                    <Link to={`product/${product.id}/edit`} className="btn btn-primary">EDIT</Link> &nbsp;
+                    <button type="button" className="btn btn-danger" onClick={(e)=>this.onDelete(product.id)} >DELETE</button>
                 </td>
             </tr>
         );

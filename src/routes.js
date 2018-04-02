@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import HomePage from './pages/home_page/home_page';
 import NotFoundPage from './pages/not_found_page/not_found_page';
 import ProductListPage from './pages/product_page/product_list_page';
 import ProductActionPage from './pages/product_action_page/product_action_page';
+import SimpleReactFileUpload from './compenents/uploadfile'
 const routes = [
     {
         path:'/',
@@ -17,12 +18,17 @@ const routes = [
     {
         path:'/product/add',
         exact:false,
-        main:()=><ProductActionPage />
+        main:({history})=><ProductActionPage history={history} />
     },
     {
         path:'/product/:id/edit',
         exact:false,
-        main:({match})=><ProductActionPage match={match} />
+        main:({history,match})=><ProductActionPage match={match} history={history} />
+    },
+    {
+        path:'/upload',
+        exact:false,
+        main:()=><SimpleReactFileUpload  />
     },
     {
         path:'',

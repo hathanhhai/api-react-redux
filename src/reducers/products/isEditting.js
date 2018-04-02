@@ -14,18 +14,10 @@ var findIndex = (data,id)=>{
 
 const myReducer = (state=initialDefault,action)=>{
     switch(action.type){
-        case types.FETCH_PRODUCTS:
-            state = action.products
-            return state;
-        case types.PRODUCT_DELETE:
-               var index = findIndex(state,action.id);
-               state.splice(index,1);
-            return [...state]
-        case types.PRODUCT_ADD:
-            state.push(action.product);
-            return [...state];
-
-    
+        case types.FETCH_ONE:
+  
+            state = action.product
+            return action.product;
         default:
         return [...state];
     }
